@@ -17,7 +17,9 @@ ark-bn254 = { version = "0.5.0", default-features = false }
 ark-ec = { version = "0.5.0", default-features = false }
 ark-ff = { version = "0.5.0", default-features = false }
 ark-std = { version = "0.5.0", default-features = false }
-hex = { version = "0.4.3", default-features = false, features = ["alloc"], optional = true }
+hex = { version = "0.4.3", default-features = false, features = [
+    "alloc",
+], optional = true }
 hex-literal = { version = "0.4.1", default-features = false }
 sha3 = { version = "0.10.8", default-features = false }
 snafu = { version = "0.8.3", default-features = false }
@@ -28,6 +30,11 @@ clap = { version = "4.5.4", features = ["derive"], optional = true }
 regex = { version = "1", default-features = false, optional = true }
 log = { version = "0.4.25", optional = true }
 env_logger = { version = "0.11.6", optional = true }
+
+# js
+wasm-bindgen = { version = "0.2.100", optional = true }
+serde-wasm-bindgen = { version = "0.6.5", optional = true }
+
 
 [dev-dependencies]
 assert_cmd = "2.0.16"
@@ -50,5 +57,10 @@ bins = [
     "dep:anyhow",
     "dep:regex",
     "dep:log",
-    "dep:env_logger"
+    "dep:env_logger",
 ]
+wasm = ["wasm-bindgen", "serde-wasm-bindgen"]
+
+
+[lib]
+crate-type = ["cdylib", "rlib"]

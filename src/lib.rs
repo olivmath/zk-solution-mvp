@@ -25,6 +25,9 @@ mod srs;
 mod types;
 mod utils;
 
+#[cfg(feature = "wasm")]
+pub mod wasm;
+
 use crate::{
     key::{read_g2, PreparedVerificationKey, VerificationKey},
     proof::Proof,
@@ -172,7 +175,7 @@ impl NuChallenges {
             .into()
     }
 
-    fn c_v(&challenge: &[u8; 32]) -> [Fr; 30] {
+        fn c_v(challenge: &[u8; 32]) -> [Fr; 30] {
         core::array::from_fn(|i| {
             if i == 0 {
                 challenge.into_fr()
