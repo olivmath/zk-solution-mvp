@@ -13,7 +13,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
 use wasm_bindgen::prelude::*;
+use crate::VerificationKey;
+use hex::encode as hex_encode;
 
 #[wasm_bindgen(js_name = convertProof)]
 pub fn convert_proof(_proof_data: &[u8], _num_inputs: usize) -> Result<JsValue, JsValue> {
@@ -26,12 +29,12 @@ pub fn convert_proof(_proof_data: &[u8], _num_inputs: usize) -> Result<JsValue, 
 }
 
 #[wasm_bindgen(js_name = convertVerificationKey)]
-pub fn convert_verification_key(_vk_data: &[u8]) -> Result<JsValue, JsValue> {
-    let vk = [111, 111, 111];
+pub fn convert_verification_key(vk_data: &[u8]) -> Result<JsValue, JsValue> {
+    let solidity_bytes = VerificationKey::<()>::try_from(vk_data)
+        .map_err(|e| JsValue::from_str(&format!("Erro ao interpretar VK: {}", e)))?
+        .as_solidity_bytes();
 
-    let js_vk = serde_wasm_bindgen::to_value(&vk).map_err(|e| {
-        JsValue::from_str(&format!("Erro ao serializar chave de verificação: {:?}", e))
-    })?;
+    let hex_string = hex_encode(&solidity_bytes);
 
-    Ok(js_vk)
+    Ok(JsValue::from_str(&hex_string))
 }

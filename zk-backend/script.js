@@ -26,11 +26,12 @@ console.log("Generating proof...");
 const { proof, publicInputs } = await backend.generateProof(witness);
 console.log("Proof generated!");
 
-const convertedProof = ultraplonk.convertProof(proof, 1);
-console.log("Converted proof: ", convertedProof);
-
 const vk = await backend.getVerificationKey();
 console.log("Verification key: ", vk);
+
+
+const convertedProof = ultraplonk.convertProof(proof, 1);
+console.log("Converted proof: ", convertedProof);
 
 const convertedVk = ultraplonk.convertVerificationKey(vk)
 console.log("Converted verification key: ", convertedVk);
