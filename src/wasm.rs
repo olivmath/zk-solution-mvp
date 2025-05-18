@@ -13,19 +13,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-use wasm_bindgen::prelude::*;
 use crate::VerificationKey;
 use hex::encode as hex_encode;
+use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen(js_name = convertProof)]
-pub fn convert_proof(_proof_data: &[u8], _num_inputs: usize) -> Result<JsValue, JsValue> {
-    let proof = [123, 123, 123];
+pub fn convert_proof(proof_data: &[u8], num_inputs: usize) -> Result<JsValue, JsValue> {
+    const WORD_SIZE: usize = 32;
 
-    let js_proof = serde_wasm_bindgen::to_value(&proof)
-        .map_err(|e| JsValue::from_str(&format!("Erro ao serializar prova: {:?}", e)))?;
+    let total_pub_inputs_len = num_inputs * WORD_SIZE;
+    if proof_data.len() < total_pub_inputs_len {
+        return Err(JsValue::from_str(
+            "Prova muito curta para a quantidade de inputs públicos",
+        ));
+    }
 
-    Ok(js_proof)
+    // Remove os public inputs (início do vetor)
+    let (_pub_inputs_bytes, proof_without_pubs) = proof_data.split_at(total_pub_inputs_len);
+
+    // Codifica a prova como string hexadecimal
+    let proof_hex = hex_encode(proof_without_pubs);
+
+    Ok(JsValue::from_str(&proof_hex))
 }
 
 #[wasm_bindgen(js_name = convertVerificationKey)]
