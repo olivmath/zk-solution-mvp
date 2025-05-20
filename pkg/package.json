@@ -1,0 +1,28 @@
+{
+  "name": "ultraplonk-no-std",
+  "collaborators": [
+    "Horizen Labs <admin@horizenlabs.io>"
+  ],
+  "version": "0.4.0",
+  "license": "MIT/Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zkVerify/ultraplonk_verifier"
+  },
+  "files": [
+    "ultraplonk_no_std_bg.wasm",
+    "ultraplonk_no_std.js",
+    "ultraplonk_no_std.d.ts",
+    "LICENSE-APACHE",
+    "LICENSE-MIT"
+  ],
+  "main": "ultraplonk_no_std.js",
+  "homepage": "https://horizenlabs.io",
+  "types": "ultraplonk_no_std.d.ts",
+  "keywords": [
+    "cryptography",
+    "elliptic-curves",
+    "pairing",
+    "zk-SNARKs"
+  ]
+}
