@@ -16,7 +16,8 @@ Desenvolvedores que trabalham com UltraPlonk enfrentam as seguintes barreiras:
 - A conversão para formato hex só é possível via CLI, impedindo uso em ambientes frontend/browser.
 - Não existe uma solução oficial para conversão em tempo de execução via JavaScript.
 
-![](./problem.png)
+<!-- ![](./problem.png) -->
+<img width="50%" alt="problem" src="https://github.com/user-attachments/assets/764ccb54-c7b9-43fa-97bd-17c6239da7d0" />
 
 ---
 
@@ -30,11 +31,16 @@ Criação de uma **biblioteca JavaScript/TypeScript** open-source que:
 
 > Essa biblioteca **já está funcional em uma PoC** e com provas de envio bem-sucedido para a ZKVerify.
 
-![](./solution.png)
+<!-- ![](./solution.png) -->
 
-# OR
+<!-- ![](./solution2.png) -->
 
-![](./solution2.png)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a8bc6885-754d-483d-9b83-2d20505816d8" alt="solution" width="45%" />
+  <img src="https://github.com/user-attachments/assets/d20373c5-67b1-4002-8d11-f7a0519200db" alt="solution2" width="50%" />
+</p>
+
+
 
 ---
 
@@ -59,6 +65,8 @@ A PoC desenvolvida já demonstra que:
 - 🔬 Testes automatizados.
 - 🌐 Demo em video para os 2 exemplos.
 - 🧪 Scripts de benchmark de tempo e peso da conversão.
+
+### Linha do tempo:
 
 | Semana | Atividade                                            |
 | ------ | ---------------------------------------------------- |
