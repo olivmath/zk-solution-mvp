@@ -1,28 +1,26 @@
 {
-  "name": "ultraplonk-no-std",
+  "name": "olivmath-ultraplonk-zk-verify",
   "collaborators": [
-    "Horizen Labs <admin@horizenlabs.io>"
+    "Lucas Bispo de Oliveira <olivmath@protonmail.com>"
   ],
-  "version": "0.4.0",
-  "license": "MIT/Apache-2.0",
+  "description": "I have developed a **functional Proof of Concept (PoC/MVP)** that performs this conversion **natively in node.js (Backend) and in the browser (Frontend)**, allowing proofs to be submitted directly to ZKVerify without manual CLI steps.",
+  "version": "0.2.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zkVerify/ultraplonk_verifier"
+    "url": "https://github.com/olivmath/olivmath-ultraplonk-zk-verify.git"
   },
   "files": [
-    "ultraplonk_no_std_bg.wasm",
-    "ultraplonk_no_std.js",
-    "ultraplonk_no_std.d.ts",
-    "LICENSE-APACHE",
-    "LICENSE-MIT"
+    "olivmath_ultraplonk_zk_verify_bg.wasm",
+    "olivmath_ultraplonk_zk_verify.js",
+    "olivmath_ultraplonk_zk_verify.d.ts"
   ],
-  "main": "ultraplonk_no_std.js",
-  "homepage": "https://horizenlabs.io",
-  "types": "ultraplonk_no_std.d.ts",
+  "main": "olivmath_ultraplonk_zk_verify.js",
+  "types": "olivmath_ultraplonk_zk_verify.d.ts",
   "keywords": [
     "cryptography",
     "elliptic-curves",
-    "pairing",
-    "zk-SNARKs"
+    "zkverify",
+    "ultraplonk"
   ]
 }

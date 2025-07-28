@@ -1,4 +1,4 @@
-import ultraplonk from "ultraplonk_no_std";
+import ultraplonk from "olivmath_ultraplonk_zk_verify";
 import express from "express";
 import cors from "cors";
 import { UltraPlonkBackend } from "@aztec/bb.js";
@@ -51,6 +51,18 @@ app.get("/", (req, res) => {
   };
 });
 
+const convertProofAndVkToHex = (proof, vk) => {
+  // Converte a prova usando a função do WebAssembly
+  const convertedProof = ultraplonk.convert_proof(proof, 1); // 1 é o número de inputs públicos
+
+  // Converte a chave de verificação
+  const convertedVk = ultraplonk.convert_verification_key(vk);
+
+  return {
+    proofHex: convertedProof,
+    vkHex: convertedVk,
+  };
+};
 // POST - Submissão da prova
 app.post("/", async (req, res) => {
   try {
@@ -115,19 +127,6 @@ app.listen(port, () => {
     `🚀 Servidor de verificação de provas ZK rodando em http://localhost:${port}`
   );
 });
-
-const convertProofAndVkToHex = (proof, vk) => {
-  // Converte a prova usando a função do WebAssembly
-  const convertedProof = ultraplonk.convert_proof(proof, 1); // 1 é o número de inputs públicos
-  
-  // Converte a chave de verificação
-  const convertedVk = ultraplonk.convert_verification_key(vk);
-  
-  return {
-    proofHex: convertedProof,
-    vkHex: convertedVk
-  };
-};
 
 const submitProofToZkVerify = async (proofHex, publicInputs, vkHex) => {
   const session = await zkVerifySession.start().Volta().withAccount(SEED);

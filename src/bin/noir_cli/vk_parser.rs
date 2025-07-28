@@ -18,7 +18,7 @@ use std::path::PathBuf;
 use crate::utils::{self, out_file};
 use anyhow::{anyhow, Context, Result};
 use log::info;
-use ultraplonk_no_std::key::VerificationKey;
+use olivmath_ultraplonk_zk_verify::key::VerificationKey;
 
 pub fn parse_verification_key(input: &PathBuf, output: &Option<PathBuf>) -> Result<()> {
     info!("Parsing proof");

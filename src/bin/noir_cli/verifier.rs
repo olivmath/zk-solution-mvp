@@ -16,7 +16,7 @@
 use anyhow::{anyhow, Context, Result};
 use log::info;
 use std::path::PathBuf;
-use ultraplonk_no_std::{verify as verify_proof, PublicInput};
+use olivmath_ultraplonk_zk_verify::{verify as verify_proof, PublicInput};
 
 pub fn verify(key: &PathBuf, proof: &PathBuf, pubs: &PathBuf) -> Result<()> {
     info!("Reading key file: {key:?}");
@@ -56,13 +56,13 @@ pub(crate) fn convert_to_pub_inputs(data: &[u8]) -> Result<Vec<PublicInput>> {
         .collect())
 }
 
-fn read_proof_file(path: &PathBuf) -> Result<[u8; ultraplonk_no_std::PROOF_SIZE]> {
+fn read_proof_file(path: &PathBuf) -> Result<[u8; olivmath_ultraplonk_zk_verify::PROOF_SIZE]> {
     let data = std::fs::read(path).with_context(|| format!("Failed to read file: {path:?}"))?;
 
     data.as_slice().try_into().map_err(|_| {
         anyhow!(
             "File size is not correct: expected {:?}, got {:?}",
-            ultraplonk_no_std::PROOF_SIZE,
+            olivmath_ultraplonk_zk_verify::PROOF_SIZE,
             data.len()
         )
     })

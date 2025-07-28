@@ -29,7 +29,7 @@ pub fn parse_proof_data(
     let mut proof = std::fs::read(input_proof)
         .with_context(|| format!("Failed to read file: {input_proof:?}"))?;
 
-    let expected_len = ultraplonk_no_std::PROOF_SIZE + 32 * num_inputs;
+    let expected_len = olivmath_ultraplonk_zk_verify::PROOF_SIZE + 32 * num_inputs;
     if proof.len() != expected_len {
         Err(anyhow!(
             "File size is not as expected. Expected {:?}, Actual: {:?}",

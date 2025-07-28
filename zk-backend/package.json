@@ -18,7 +18,7 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "nodemon": "^3.0.3",
-    "ultraplonk_no_std": "file:../pkg",
+    "olivmath_ultraplonk_zk_verify": "file:../pkg",
     "zkverifyjs": "^0.12.1"
   }
 }

@@ -1,5 +1,5 @@
 import { zkVerifySession, ZkVerifyEvents } from "zkverifyjs";
-import ultraplonk from "ultraplonk_no_std";
+import ultraplonk from "olivmath_ultraplonk_zk_verify";
 import { UltraPlonkBackend } from "@aztec/bb.js";
 import { Noir } from "@noir-lang/noir_js";
 import { fileURLToPath } from "url";
